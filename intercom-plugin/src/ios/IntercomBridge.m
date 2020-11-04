@@ -140,11 +140,18 @@
 }
 
 - (void)registerForPush:(CDVInvokedUrlCommand*)command {
-    UIApplication *application = [UIApplication sharedApplication];
-    [application registerUserNotificationSettings:[UIUserNotificationSettings
-                                 settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)
-                                       categories:nil]];
-    [application registerForRemoteNotifications];
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if( !error ) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            });
+            NSLog( @"Intercom: Push registration success." );
+        } else {
+            NSLog( @"Intercom: Push registration FAILED" );
+        }
+    }];
     [self sendSuccess:command];
 }
 
