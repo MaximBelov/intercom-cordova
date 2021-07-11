@@ -52,7 +52,7 @@
               <source url="https://cdn.cocoapods.org/"/>
           </config>
           <pods use-frameworks="true">
-              <pod name="Intercom" spec="~> 9.0.0" />
+              <pod name="Intercom" spec="~> 9.3.5" />
           </pods>
       </podspec>
     </platform>
