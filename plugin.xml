@@ -22,7 +22,7 @@
 
     <platform name="ios">
       <hook type="before_plugin_install" src="scripts/prepareCocoaPods.js" />
-      <hook type="after_prepare" src="scripts/checkForUpdate.js" />
+<!--      <hook type="after_prepare" src="scripts/checkForUpdate.js" />-->
 
       <header-file src="src/ios/IntercomBridge.h" />
       <source-file src="src/ios/IntercomBridge.m" />
@@ -62,7 +62,7 @@
               <source url="https://cdn.cocoapods.org/"/>
           </config>
           <pods use-frameworks="true">
-              <pod name="Intercom" spec="~> 10.3.0" />
+              <pod name="Intercom" spec="~> 10.4.0" />
           </pods>
       </podspec>
     </platform>
