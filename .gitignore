@@ -1,2 +1,6 @@
 .DS_Store
 Example/node_modules
+Example/android-frs-network.keystore
+Example/build.json
+Example/google-services.json
+Example/GoogleService-Info.plist
