@@ -12,7 +12,7 @@
 @implementation IntercomBridge : CDVPlugin
 
 - (void)pluginInitialize {
-    [Intercom setCordovaVersion:@"12.4.0"];
+    [Intercom setCordovaVersion:@"15.1.6"];
     #ifdef DEBUG
         [Intercom enableLogging];
     #endif
@@ -34,7 +34,7 @@
     }
 
     ICMUserAttributes *userAttributes = [ICMUserAttributes new];
-    
+
     if (userId.length > 0 && userEmail.length > 0) {
         userAttributes.userId = userId;
         userAttributes.email = userEmail;
@@ -48,7 +48,7 @@
                                     callbackId:command.callbackId];
         return;
     }
-    
+
     [Intercom loginUserWithUserAttributes:userAttributes success:^{
         [self sendSuccess:command];
     } failure:^(NSError * _Nonnull error) {
