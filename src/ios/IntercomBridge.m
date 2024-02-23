@@ -106,7 +106,7 @@
 }
 
 - (void)displayMessenger:(CDVInvokedUrlCommand*)command {
-    [Intercom presentMessenger];
+    [Intercom presentIntercom];
     [self sendSuccess:command];
 }
 
@@ -117,14 +117,14 @@
 }
 
 - (void)displayHelpCenter:(CDVInvokedUrlCommand*)command {
-    [Intercom presentHelpCenter];
+    [Intercom presentIntercom:helpCenter];
     [self sendSuccess:command];
 }
 
 - (void)displayHelpCenterCollections:(CDVInvokedUrlCommand*)command {
     NSDictionary *args = command.arguments[0];
     NSArray* collectionIds = args[@"collectionIds"];
-    [Intercom presentHelpCenterCollections:collectionIds];
+    [Intercom presentContent:[IntercomContent helpCenterCollectionsWithIds:collectionIds]];
     [self sendSuccess:command];
 }
 
@@ -217,20 +217,20 @@
 }
 
 - (void)displayCarousel:(CDVInvokedUrlCommand*)command {
-  NSString *carouselId = command.arguments[0];
-    [Intercom presentCarousel:carouselId];
+    NSString *carouselId = command.arguments[0];
+    [Intercom presentContent:[IntercomContent carouselWithId:carouselId]];
     [self sendSuccess:command];
 }
 
 - (void)displayArticle:(CDVInvokedUrlCommand*)command {
-  NSString *articleId = command.arguments[0];
-    [Intercom presentArticle:articleId];
+    NSString *articleId = command.arguments[0];
+    [Intercom presentContent:[IntercomContent articleWithId:articleId]];
     [self sendSuccess:command];
 }
 
 - (void)displaySurvey:(CDVInvokedUrlCommand*)command {
-  NSString *surveyId = command.arguments[0];
-    [Intercom presentSurvey:surveyId];
+    NSString *surveyId = command.arguments[0];
+    [Intercom presentContent:[IntercomContent surveyWithId:surveyId]];
     [self sendSuccess:command];
 }
 
